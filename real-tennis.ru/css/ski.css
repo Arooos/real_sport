@@ -1,0 +1,130 @@
+.body {
+    background: url("../img/ski/discription/bg1.png") center center/cover no-repeat;
+    background-attachment: fixed
+}
+.modal_tour_item {
+    background: url(../img/ski/history/bg_date.png) center center/cover no-repeat;
+}
+nav{
+    background-color: #0b0e16;
+}
+nav ul li ul {
+    background: #0b0e16;
+}
+nav ul li a:hover {
+    color: #8093A9;
+}
+.categories .main .back .categories_back_near_else {
+    color: #8093A9;
+  }
+.anons .nearest_categories {
+    color: #8093A9;
+}
+.anons .nearest_btn_2 {
+    background: #8093A9;
+}	
+.anons .nearest_btn_1 {
+    background: #1C2339;
+}
+.menu_link:hover {
+    color: #8093A9;
+}
+.menu_sm_link:hover {
+    color: #8093A9;
+}
+.phone:hover {
+    color: #8093A9;
+}
+.btn {
+    background: #8093A9;
+}
+.btn:hover {
+    background: #1C2339;
+}
+.categories .main .front .categories_front_near {
+    color: #8093A9;
+}
+.categories .main .back .categories_back_near {
+    color: #8093A9;
+}
+.slick-dots li.slick-active button {
+    background: #8093A9;
+}
+.courts .carousel__inner__title:hover {
+    color: #8093A9;
+}
+.orange {
+    background: #8093A9;
+}
+.sing_title span {
+    color: #8093A9;
+}
+.sing_tipe span {
+    color: #8093A9;
+}
+.footer_phone a:hover {
+    color: #8093A9;
+}
+.footer_logo a:hover {
+    color: #8093A9;
+}
+.modal_name {
+    color: #8093A9;
+}
+.modal_list_title {
+    color: #8093A9;
+}
+.modal_tour_item:hover {
+    color: #8093A9;
+}
+.modal_history .more_subtitle {
+    color: #8093A9;
+}
+.modal_history a:hover {
+    color: #8093A9;
+}
+.categories_sm .wrapper .item .main .front_item_near {
+    color: #8093A9;
+}
+.categories_sm .wrapper .item .main .back_item_near {
+    color: #8093A9;
+}
+.categories_sm .item_near {
+    color: #8093A9;
+}
+.courts .carousel__inner__title:hover {
+    color: #8093A9;
+}
+
+.orange {
+    background: #8093A9;
+}
+.orange:hover {
+    background: #52667d;
+}
+  
+.braun {
+    background: #2E4763;
+}
+.braun:hover {
+    background: #24384e;}
+  
+.red {
+    background: #1C2339;
+}
+.red:hover {
+    background: #151a2b;
+}
+
+.anons .nearest_btn_2:hover {
+    background: #536070;
+}
+.anons .nearest_btn_1.anons {
+    background: #06080f;;
+}
+.categories .main .back .categories_back_btn_2:hover {
+    background: #612E19;
+}
+.categories_sm .wrapper .item .main .back_item_btn_2:hover {
+    background: #612E19;
+}
