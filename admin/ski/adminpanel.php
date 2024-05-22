@@ -1,5 +1,5 @@
 <?php
-    require "/ospanel/domains/localhost/app/connection/ski_cnf.php";
+    require "../../app/connection/ski_cnf.php";
     session_start();
 ?>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/bootstrap-grid.min.css">
-    <title>Admin</title>
+    <title>Админ панель real-sport</title>
 </head>
 <body>
     <div class="container" style="margin: 0 auto;margin-top:100px; max-width: 600px;">

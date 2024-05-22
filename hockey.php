@@ -137,7 +137,7 @@
                                     <button data-modal="particip" id="<?php echo $val["id"];?>" class="nearest_btn_2 btn bg_block">участники</button>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php break; } ?>
                         </div> 
                     </section>
                 </div>
@@ -1192,6 +1192,7 @@
             </div>
         </div>
     </section>
+                    
 
     <section class="history_sm" id="history_sm">
         <div class="title">ИСТОРИЯ НАШИХ ТУРНИРОВ</div>
@@ -1210,7 +1211,7 @@
                     <button data-modal="modal_tour" class="it_btn orange bg_block" id="2021">2021</button>
                 </div>
                 <div class="it">
-                    <button data-modal="modal_tour" class="it_btn braun bg_block" id="2020">2029</button>
+                    <button data-modal="modal_tour" class="it_btn braun bg_block" id="2020">2020</button>
                 </div>
             </div>
         </div>

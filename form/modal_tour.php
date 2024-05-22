@@ -66,13 +66,43 @@ switch($case){
                 ?></div>
                 <div class="more_subtitle">ПОБЕДИТЕЛИ ТУРНИРА:</div>
                 <ul>
-                <li>Нодь Петр/Назарова Гульнара</li>
-                <li>Крупник Павел/Денисенко Лера</li>
-                <li>Шопенко Анатолий/Кюммель Алиса</li>
+                    <?php 
+                        $opt = $db->prepare("SELECT `surname`,`name` FROM `users` WHERE `id` IN (SELECT `id_user` FROM `users_result_tour` WHERE `id_tournament` = $_POST[tournament_id] AND `id_result` = 1)");
+                        $opt->execute(array());
+                        $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                        foreach ($value as $result_row){
+                        ?>
+                        <li> <?php echo $result_row["surname"],' ',$result_row["name"]?></li>
+                    <?php 
+                        }
+                        $opt = $db->prepare("SELECT `surname`,`name` FROM `users` WHERE `id` IN (SELECT `id_user` FROM `users_result_tour` WHERE `id_tournament` = $_POST[tournament_id] AND `id_result` = 2)");
+                        $opt->execute(array());
+                        $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                        foreach ($value as $result_row){
+                        ?>
+                        <li> <?php echo $result_row["surname"],' ',$result_row["name"]?></li>
+                    <?php 
+                        }
+                        $opt = $db->prepare("SELECT `surname`,`name` FROM `users` WHERE `id` IN (SELECT `id_user` FROM `users_result_tour` WHERE `id_tournament` = $_POST[tournament_id] AND `id_result` = 3)");
+                        $opt->execute(array());
+                        $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                        foreach ($value as $result_row){
+                        ?>
+                        <li> <?php echo $result_row["surname"],' ',$result_row["name"]?></li>
+                    <?php 
+                        }
+                    ?>
                 </ul>
                 <div class="more_subtitle">ДОПОЛНИТЕЛЬНЫЙ ТУРНИР</div>
                 <ul>
-                <li>Борисевич Андрей/Рассовская Лида</li>
+                    <?php
+                        $opt = $db->prepare("SELECT `surname`,`name` FROM `users` WHERE ID = (SELECT `id_user` FROM `users_result_tour` WHERE `id_tournament` = $_POST[tournament_id] AND `id_result` = 4)");
+                        $opt->execute(array());
+                        $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                        foreach ($value as $result_row){
+                        ?>
+                        <li> <?php echo $result_row["surname"],' ',$result_row["name"]?></li>
+                    <?php }?>
                 </ul>
                 <a href="">фото</a>';  
             </div>

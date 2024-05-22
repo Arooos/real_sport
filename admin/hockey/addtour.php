@@ -1,5 +1,5 @@
 <?php
-require "/ospanel/domains/localhost/app/connection/hockey_cnf.php";
+require "../../app/connection/hockey_cnf.php";
 //id категории
 $cat = $_POST['categories'];
 $category = $db->prepare("SELECT `id` FROM `categories` WHERE name='$cat'");

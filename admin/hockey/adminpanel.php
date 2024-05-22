@@ -1,5 +1,5 @@
 <?php
-    require "/ospanel/domains/localhost/app/connection/hockey_cnf.php";
+    require "../../app/connection/hockey_cnf.php";
     session_start();
 ?>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/bootstrap-grid.min.css">
-    <title>Admin</title>
+    <title>Админ панель real-sport</title>
 </head>
 <body>
     <div class="container" style="margin: 0 auto;margin-top:100px; max-width: 600px;">
@@ -183,29 +183,24 @@
 
          <!-- Победители турнира -->
 
-        <form>
+        <form class="formSearch" id="formSearch" name="formSearch">
             <div class="mb-3" style="display:block;margin-top: 50px">
                 <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Дата мероприятия</span>
-                <input class="form-control" name="data_search" type="date" method="post" required>
-                <div class="col-4">
-                    <button type="submit" id="tour_search" class="btn btn-primary" style="display: block;margin-right: 0;margin-left: auto;width: 100px">Поиск</button>
+                    <span class="input-group-text" id="basic-addon1">Дата</span>
+                    <input class="form-control" name="data_search" type="date" method="post" required>
+                    <div class="col-4">
+                        <button type="submit" data-modal="btnSearch" class="btn btn-primary" id="btnSearch" style="display: block;margin-right: 0;margin-left: auto;width: 100px">Поиск</button>
+                    </div>
                 </div>
             </div>
-            <div class="serch_result">
-                <?php
-                    require "../../app/connection/hockey_cnf.php";
-                    $search_date = $_POST['data_search'];
-                    $date = $db->prepare("SELECT * FROM `tournament` WHERE `date`= $search_date");
-                    $date->execute(array());
-                    $value = $date->fetch(PDO::FETCH_COLUMN);
-                    echo $value;
-                ?>
-            </div>
-</form>
+        </form>
 
-        
+        <div id="serch_result">
+        </div>
     </div>  
     
 </body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./adminsearch/tourSearch.js"></script>
 </html>

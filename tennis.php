@@ -136,7 +136,7 @@
                                     <button data-modal="particip" id="<?php echo $val["id"];?>" class="nearest_btn_2 btn bg_block">участники</button>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php break; } ?>
                         </div> 
                     </section>
                 </div>
