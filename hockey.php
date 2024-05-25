@@ -47,7 +47,6 @@
                     <section class="anons" id="anons">
                     <?php
                         $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE);");
-                        // SELECT MAX(ID) FROM tournament
                         $opt->execute(array());
                         $value = $opt->fetchall(PDO::FETCH_ASSOC);
                         foreach($value as $val){
@@ -158,7 +157,7 @@
                 <div class="col-md-4">
                     <!-- цикл для вывода актуальных турниров ( которые не актуальной/сегодняшней даты) -->
                     <?php 
-                        $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE);");                        // ("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date > CURRENT_DATE);")
+                        $opt = $db->prepare("SELECT `date` FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 1;");                        // ("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date > CURRENT_DATE);")
                         $opt->execute(array());
                         $date_tour = $opt->fetch(PDO::FETCH_COLUMN);
                         if ($date_now < $date_tour):
@@ -166,7 +165,7 @@
                     <div class="main">
                             <?php
                                 //выбока самой поздней записи из турниров где категория МУЖСКАЯ ОДИНОЧКА id=1 
-                                $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE);");
+                                $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 1;");
                                 $opt->execute(array());
                                 $value = $opt->fetchall(PDO::FETCH_ASSOC);
                                 foreach($value as $val){
@@ -314,15 +313,15 @@
                 <div class="col-md-4">
                     <!-- цикл для вывода актуальных турниров ( которые не актуальной/сегодняшней даты) -->
                     <?php 
-                        $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 2);");
+                        $opt = $db->prepare("SELECT `date` FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 2;");
                         $opt->execute(array());
                         $date_tour = $opt->fetch(PDO::FETCH_COLUMN);
                         if ($date_now < $date_tour):
                     ?>
                     <div class="main">
                                 <?php
-                                    //выбока самой поздней записи из турниров где категория МУЖСКАЯ ОДИНОЧКА id=10
-                                    $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 2);");
+                                    //выбока самой поздней записи из турниров где категория МУЖСКАЯ ОДИНОЧКА id=2
+                                    $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 2;");
                                     $opt->execute(array());
                                     $value = $opt->fetchall(PDO::FETCH_ASSOC);
                                     foreach($value as $val){
@@ -470,7 +469,7 @@
                 <div class="col-md-4">
                         <!-- цикл для вывода актуальных турниров ( которые не актуальной/сегодняшней даты) -->
                         <?php 
-                            $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 3);");
+                            $opt = $db->prepare("SELECT `date` FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 3;");
                             $opt->execute(array());
                             $date_tour = $opt->fetch(PDO::FETCH_COLUMN);
                             if ($date_now < $date_tour):
@@ -478,7 +477,7 @@
                     <div class="main">
                             <?php
                                 //выбока самой поздней записи из турниров где категория МУЖСКАЯ ОДИНОЧКА id=3
-                                $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 3);");
+                                $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 3;");
                                 $opt->execute(array());
                                 $value = $opt->fetchall(PDO::FETCH_ASSOC);
                                 foreach($value as $val){
@@ -635,7 +634,7 @@
                 <div class="item">
                     <!-- цикл для вывода актуальных турниров ( которые не актуальной/сегодняшней даты) -->
                     <?php 
-                        $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 1);");
+                        $opt = $db->prepare("SELECT `date` FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 1;");
                         $opt->execute(array());
                         $date_tour = $opt->fetch(PDO::FETCH_COLUMN);
                         if ($date_now < $date_tour):
@@ -643,7 +642,7 @@
                     <div class="main">
                         <?php
                             //выбока самой поздней записи из турниров где категория МУЖСКАЯ ОДИНОЧКА id=11 
-                            $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 1);");
+                            $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 1;");
                             $opt->execute(array());
                             $value = $opt->fetchall(PDO::FETCH_ASSOC);
                             foreach($value as $val){
@@ -792,15 +791,15 @@
                 <div class="item">
                     <!-- цикл для вывода актуальных турниров ( которые не актуальной/сегодняшней даты) -->
                     <?php 
-                        $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 2);");
+                        $opt = $db->prepare("SELECT `date` FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 2;");
                         $opt->execute(array());
                         $date_tour = $opt->fetch(PDO::FETCH_COLUMN);
                         if ($date_now < $date_tour):
                     ?>
                     <div class="main">
                         <?php
-                            //выбока самой поздней записи из турниров где категория МУЖСКАЯ ПАРА id=10
-                            $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 2);");
+                            //выбока самой поздней записи из турниров где категория МУЖСКАЯ ПАРА id=2
+                            $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 2;");
                             $opt->execute(array());
                             $value = $opt->fetchall(PDO::FETCH_ASSOC);
                             foreach($value as $val){
@@ -949,7 +948,7 @@
                 <div class="item">
                     <!-- цикл для вывода актуальных турниров ( которые не актуальной/сегодняшней даты) -->
                     <?php 
-                        $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE and id_categories = 3);");
+                        $opt = $db->prepare("SELECT `date` FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE) and id_categories = 3;");
                         $opt->execute(array());
                         $date_tour = $opt->fetch(PDO::FETCH_COLUMN);
                         if ($date_now < $date_tour):
