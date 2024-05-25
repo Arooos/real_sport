@@ -46,7 +46,7 @@
                 <div class="col-md-6 offset-md-1">
                     <section class="anons" id="anons">
                     <?php
-                        $opt = $db->prepare("SELECT * FROM tournament WHERE ID = (SELECT MAX(ID) FROM tournament);");
+                        $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE;");
                         $opt->execute(array());
                         $value = $opt->fetchall(PDO::FETCH_ASSOC);
                         foreach($value as $val){

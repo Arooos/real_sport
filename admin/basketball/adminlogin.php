@@ -1,5 +1,5 @@
 <?php
-	require "/ospanel/domains/localhost/app/connection/basketball_cnf.php";
+	require "../../app/connection/basketball_cnf.php";
 	session_start();
 	$login = $_POST['login'];
 	$password = $_POST['password'];

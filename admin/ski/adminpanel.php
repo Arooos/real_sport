@@ -92,11 +92,11 @@
             <span class="input-group-text" id="basic-addon1">Время начала</span>
             <input class="form-control" name="time" type="time" method="post" required>
         </div>
-        <!-- взнос за участие -->
+        <!-- взнос за участие
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Взнос</span>
             <input class="form-control" name="price"  type="price" method="post" required>
-        </div>
+        </div> -->
         <!-- выбор уровня игрока -->
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Уровень допуска игрока</span>
@@ -179,6 +179,27 @@
         ?>
         <?php endif ?> 
         </form>
-    </div>
+
+ <!-- Победители турнира -->
+
+        <form class="formSearch" id="formSearch" name="formSearch">
+            <div class="mb-3" style="display:block;margin-top: 50px">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Дата</span>
+                    <input class="form-control" name="data_search" type="date" method="post" required>
+                    <div class="col-4">
+                        <button type="submit" data-modal="btnSearch" class="btn btn-primary" id="btnSearch" style="display: block;margin-right: 0;margin-left: auto;width: 100px">Поиск</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div id="serch_result">
+        </div>
+    </div>  
+    
 </body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./adminsearch/tourSearch.js"></script>
 </html>

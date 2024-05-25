@@ -1,5 +1,5 @@
 <?php
-	require "/ospanel/domains/localhost/app/connection/hockey_cnf.php";
+	require "../../app/connection/hockey_cnf.php";
 	session_start();
 	$login = $_POST['login'];
 	$password = $_POST['password'];
