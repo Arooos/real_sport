@@ -9,7 +9,45 @@
     require '../vendor/phpmailer/phpm';
 
     function sendEmail_verify($name, $email, $verify_token){
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'user@example.com';                     //SMTP username
+            $mail->Password   = 'secret';                               //SMTP password
 
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('from@example.com', 'Mailer');
+            $mail->addAddress($email);     //Add a recipient
+
+            //Attachments
+            $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+            $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = 'Here is the subject';
+            $email_template = "
+                <h2> Вы зареистрировались на сайте real-tennis</h2>
+                <h5>Подтвердимте пожалуста свой email по ссылке ниже</h5>
+                <br/><br/>
+                <a href='http://localhost/'></a>
+            ";
+
+            $mail->Body = $email_template;
+            // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
     };
 
     if (isset($_POST['register_btn']))
