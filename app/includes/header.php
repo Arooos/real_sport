@@ -20,39 +20,7 @@
 						<li><a href="#footer" class="menu_sm_link">контакты</a></li>
 					</ul>
 				</div>
-
-				<div class="profile col-lg-2">
-					<div class="profile_img">
-						<img src="../../icons/user.png" alt="">
-					</div>
-					<div class="menu-prof">
-						<?php 
-						if(isset($_SESSION['authenticadet']))
-						{ ?>
-
-							<h3>
-								<?php echo $_SESSION['auth_user']['name'],' ', $_SESSION['auth_user']['surname'];?>
-							</h3>
-							<ul>
-								<li><a href="">Профиль</a></li>
-								<li>1 место:</li>
-								<li>2 место:</li>
-								<li>3 место:</li>
-								<li>Выйти</li>
-							</ul>
-
-
-						<?php } else {?>
-						<ul>
-							<li>Войти</li>
-							<li>Зарегистрироваться</li>
-						</ul>
-						<?php }?>
-					</div>
-				</div>
-
-				<div class="col-lg-2 offset-lg-0 col-md-3 col-sm-4 offset-sm-8 col-5 offset-7">
-
+				<div class="col-lg-2 offset-lg-1 col-md-2 col-sm-3 offset-sm-8 col-5 offset-7">
 					<?php
 						switch($case){
 						case 1: ?>
@@ -96,9 +64,18 @@
 							</li>
 						</ul>
 					<?php break; }?>
-					
+				</div>
+				<div class="col-1">
+					<div class="profile_img">
+						<?php 
+							if(isset($_SESSION['authenticadet']))
+						{ ?>
+							<a href="../../profile/profile.php"><img src="../../icons/profile/user.png" alt=""></a>
+							<a href="../../profile/logout.php"><img src="../../icons/profile/logout.png" alt=""></a>
+						<?php } else {?>
+							<a href="../../profile/login.php"><img src="../../icons/profile/user.png" alt=""></a>
+						<?php }?>
 					</div>
-				<!-- </a> -->
 				</div>
 				<div class="hamburger">
 					<span></span>

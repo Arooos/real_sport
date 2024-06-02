@@ -42,6 +42,7 @@
                                         <input type="password" name="password" class="form-control" id="regPassword">
                                     </div>
                                     <button type="submit" name="login_now_btn" class="btn btn-primary">Войти</button>
+                                    <a class="btn btn-primary" style="position: absolute;right:18px;" href="./registration.php">Зарегистрироваться</a>
                                 </form>
                             </div>
                         </div>

@@ -82,6 +82,7 @@
                                         <input name="password" type="textd" class="form-control" id="regPassword">
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="register_btn">Зарегистрироваться</button>
+                                    <a class="btn btn-primary" style="position: absolute;right:18px;" href="./login.php">Войти</a>
                                 </form>
                             </div>
                         </div>
