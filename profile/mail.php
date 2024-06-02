@@ -6,80 +6,80 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    require '../vendor/phpmailer/phpm';
+    require 'vendor/autoload.php';
 
-    function sendEmail_verify($name, $email, $verify_token){
-        $mail = new PHPMailer(true);
-        try {
-            //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'user@example.com';                     //SMTP username
-            $mail->Password   = 'secret';                               //SMTP password
+    function sendemail_verify($name, $email, $verify_token, $password)
+    {
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = 2;
+            $mail->isSMTP();                                       
+            $mail->SMTPAuth   = true;  
+            $mail->CharSet = "UTF-8";
+
+            $mail->Host       = 'ssl://smtp.gmail.com';                                   
+            $mail->Username   = 'realtennis001@gmail.com';                     //SMTP username
+            $mail->Password   = "pdclafbzzjpdzmzd";                               //SMTP password
 
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('from@example.com', 'Mailer');
+            $mail->setFrom('realtennis001@gmail.com', $name);
             $mail->addAddress($email);     //Add a recipient
-
-            //Attachments
-            $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-            $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'Here is the subject';
+            $mail->Subject = 'Real Tennis';
+
             $email_template = "
-                <h2> Вы зареистрировались на сайте real-tennis</h2>
-                <h5>Подтвердимте пожалуста свой email по ссылке ниже</h5>
+                <h2>Вы зарегистрировались на сайте real-tennis</h2>
+                <h5>Ваш пароль: $password</h5>
+                <h5>Подтвердите пожалуста свой email по ссылке ниже</h5>
                 <br/><br/>
-                <a href='http://localhost/'></a>
+                <a href='http://localhost/profile/verify-email.php?token=$verify_token'>Нажми меня</a>
             ";
 
             $mail->Body = $email_template;
-            // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
             $mail->send();
-            echo 'Message has been sent';
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            // echo 'Message has been sent';
         }
-    };
 
     if (isset($_POST['register_btn']))
         {
             $name = $_POST['name'];
-            $lastname = $_POST['lastname'];
+            $surname = $_POST['lastname'];
             $patronymic = $_POST['patronymic'];
             $phone = $_POST['phone'];
             $select = $_POST['select'];
             $email = $_POST['email'];
-            $password = $_POST['Password'];
-            $rePassword = $_POST['rePassword'];
+            $password = $_POST['password'];
             $verify_token = md5(rand());
 
             //проверка email
-            $opt = $db->prepare("SELECT `email` FROM `users` WHERE `email` = '$email' LIMIT 1");
+            $opt = $db->prepare("SELECT `email` FROM `users` WHERE `email` = '$email'");
             $opt->execute(array());
-            $check_email_query = $opt->fetch(PDO::FETCH_COLUMN);
-            if ($check_email_query > 0){
+            $value = $opt->fetchall(PDO::FETCH_ASSOC);
+            $email_val = $value[0]['email'];
+            if ($email_val == $email){
                 //если пользователь уже в системе
-                $_SESSION['status'] = "Email уже существует";
+                $_SESSION['status'] = "Email $email_val уже существует";
                 header("Location: registration.php");
-            }
-            else {
-                // добавить пользователя 
-                $sql = "INSERT INTO `users` (`id`, `surname`, `name`, `patronymic`, `phone`, `id_class`, `password`, `email`, `verify_token`) VALUES (NULL, '$surname', '$name', '$patronymic', '$phone', '$select', '$password', '$email', '$verify_token')";
+            } else {
+                $phone= str_replace([' ', '(', ')', '-'], '', $phone);
+                // делаем проверку для записи id
+                if ($select == 'любитель'):
+                $select = 1;
+                else:
+                $select = 2;
+                endif;
+                // добавить пользователя
+                $sql = "INSERT INTO `users` (`id`, `surname`, `name`, `patronymic`, `phone`, `id_class`, `email`, `password`, `verify_token`) VALUES (NULL, '$surname', '$name', '$patronymic', '$phone', '$select', '$email', '$password', '$verify_token')";
                 $query = $db->exec($sql);
 
                 if($query){
-                    sendEmail_verify("$name", "$email", "$verify_token");
+                    sendemail_verify("$name", "$email", "$verify_token", "$password");
 
-                    $_SESSION['status'] = "Вы успешно зарегистрировались! Пожалуйста, подтвердите Вашу элшектронную почту. ";
+                    $_SESSION['status'] = "Вы успешно зарегистрировались! Пожалуйста, подтвердите Вашу электронную почту. $check_email_query ";
                     header("Location: registration.php");
                 }
                 else{

@@ -1,3 +1,7 @@
+<?php
+    include('authentication.php')
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,22 +34,7 @@
             <div class="date"></div>
             <div class="tournament">
             <?php  
-                session_start(); 
-                $case = $_SESSION['case'];
-                switch($case){
-                    case 1: 
-                        require "../app/connection/basketball_cnf.php";
-                        break;
-                    case 2: 
-                        require "../app/connection/hockey_cnf.php";
-                        break;
-                    case 3: 
-                        require "../app/connection/ski_cnf.php";
-                        break;
-                    case 4: 
-                        require "../app/connection/tennis_cnf.php";
-                        break;
-                }
+                require "../app/connection/tennis_cnf.php";
                 if(isset($_POST["tournament_id"])){
                     $opt = $db->prepare("SELECT * FROM tournament WHERE id = '".$_POST["tournament_id"]."'");
                     $opt->execute(array());

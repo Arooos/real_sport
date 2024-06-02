@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <header>
 	<nav>
 		<a href="#promo"><div class="logo"><?php echo $config['title']; ?></div></a>
@@ -19,7 +20,38 @@
 						<li><a href="#footer" class="menu_sm_link">контакты</a></li>
 					</ul>
 				</div>
-				<div class="col-lg-2 offset-lg-2 col-md-3 offset-md-1 col-sm-4 offset-sm-8 col-5 offset-7">
+
+				<div class="profile col-lg-2">
+					<div class="profile_img">
+						<img src="../../icons/user.png" alt="">
+					</div>
+					<div class="menu-prof">
+						<?php 
+						if(isset($_SESSION['authenticadet']))
+						{ ?>
+
+							<h3>
+								<?php echo $_SESSION['auth_user']['name'],' ', $_SESSION['auth_user']['surname'];?>
+							</h3>
+							<ul>
+								<li><a href="">Профиль</a></li>
+								<li>1 место:</li>
+								<li>2 место:</li>
+								<li>3 место:</li>
+								<li>Выйти</li>
+							</ul>
+
+
+						<?php } else {?>
+						<ul>
+							<li>Войти</li>
+							<li>Зарегистрироваться</li>
+						</ul>
+						<?php }?>
+					</div>
+				</div>
+
+				<div class="col-lg-2 offset-lg-0 col-md-3 col-sm-4 offset-sm-8 col-5 offset-7">
 
 					<?php
 						switch($case){

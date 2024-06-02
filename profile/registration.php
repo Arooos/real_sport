@@ -1,5 +1,6 @@
 <?php 
     require "../app/connection/tennis_cnf.php";
+    session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,6 +16,15 @@
             <div class="container">
                 <div class="row justify-content-centre">
                     <div class="col-mb-6">
+                        <div class="alert">
+                            <?php
+                                if (isset($_SESSION['status']))
+                                {
+                                    echo "<h4>".$_SESSION['status']."</h4>";
+                                    unset($_SESSION['status']);
+                                }
+                            ?>
+                        </div>
                         <div class="card shadow">
                             <div class="card-header">
                                 <h5>Регистрация нового пользователя</h5>
@@ -70,10 +80,6 @@
                                     <div class="form-group mb-3">
                                         <label class="form-label">Пароль</label>
                                         <input name="password" type="textd" class="form-control" id="regPassword">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="form-label">Подтверждение пароля</label>
-                                        <input name="rePassword" type="text" class="form-control" id="reRegPassword">
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="register_btn">Зарегистрироваться</button>
                                 </form>

@@ -1,6 +1,9 @@
-.header
+header
 	position: relative
 	height: 50px
+	.profile .profile_img img
+		margin-left: 60px
+		height: 30px
 
 .logo
 	font-family: 'Bayon'
@@ -60,45 +63,48 @@ nav
 	padding-top: 9px
 	+link_hover
 nav ul li
-	list-style: none
-	a
-		font-family: 'Roboto'
-		font-weight: 300
-		letter-spacing: 1px
-		display: block
-		color: #ffffff
 		list-style: none
-		font-size: 18px
-		margin-left: 10px
-		text-transform: lowercase
-		&:hover
-			color: #E17E30
-	.active::after
-			position: relative
-			top: -3px
-			content: ""
-			display: inline-block
-			width: 10px
-			height: 10px
-			border-right: 0.2em solid #ffffff
-			border-top: 0.2em solid #ffffff
-			transform: rotate(135deg)
-			margin-right: 0.5em
-			margin-left: 1.0em
+		a
+			font-family: 'Roboto'
+			font-weight: 300
+			letter-spacing: 1px
+			display: block
+			color: #ffffff
+			list-style: none
+			font-size: 18px
+			margin-left: 10px
+			text-transform: lowercase
+			&:hover
+				color: #E17E30
+		.active::after
+				position: relative
+				top: -3px
+				content: ""
+				display: inline-block
+				width: 10px
+				height: 10px
+				border-right: 0.2em solid #ffffff
+				border-top: 0.2em solid #ffffff
+				transform: rotate(135deg)
+				margin-right: 0.5em
+				margin-left: 1.0em
+				
+		ul
+			position: absolute
+			left: 0
+			width: 180px
+			background: $bg_color
+			display: none
+			padding-left: 15px
 			
-	ul
-		position: absolute
-		left: 0
-		width: 180px
-		background: $bg_color
-		display: none
-		padding-left: 15px
-		
-		li
-			width: 100%
-	&:hover > ul
-		display: initial
-		border-radius: 10px
+			li
+				width: 100%
+		&:hover > ul
+			display: initial
+			border-radius: 10px
+
 a.active
 	pointer-events: none
 	cursor: default
+
+
