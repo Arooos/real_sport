@@ -21,9 +21,11 @@ if(isset($_POST['login_now_btn']))
                     'userID' => $userData['id'],
                     'name' => $userData['name'],
                     'surname' => $userData['surname'],
+                    'patronymic' => $userData['patronymic'],
                     'phone' => $userData['phone'],
-                    'class' => $userData['id_class'],
+                    'id_class' => $userData['id_class'],
                     'email' => $userData['email'], 
+                    'img_path' => $userData['img_path'],
                 ];
                 $_SESSION['status'] = "Вы успешно авторизировались";
                 header("Location: profile.php");

@@ -33,15 +33,15 @@
                                 <form action="mail.php" method="POST">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Имя</label>
-                                        <input name="name" type="name" class="form-control" id="regName">
+                                        <input name="name" type="name" class="form-control">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="form-label">Фамилия</label>
-                                        <input name="lastname" type="text" class="form-control" id="regLastname">
+                                        <input name="lastname" type="text" class="form-control" >
                                     </div>
                                     <div class="mform-group mb-3">
                                         <label class="form-label">Отчество</label>
-                                        <input name="patronymic" type="text" class="form-control" id="regSurname">
+                                        <input name="patronymic" type="text" class="form-control" >
                                     </div>
                                     <div class="form-group">
                                         <select name="select" class="select">
@@ -71,15 +71,15 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="form-label">Телефон для связи</label>
-                                        <input name="phone" type="phone" class="form-control" id="regPhone">
+                                        <input name="phone" type="phone" class="form-control">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="form-label">Адрес электронной почты</label>
-                                        <input name="email" type="email" class="form-control" id="regEmail">
+                                        <input name="email" type="email" class="form-control">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="form-label">Пароль</label>
-                                        <input name="password" type="textd" class="form-control" id="regPassword">
+                                        <input name="password" type="textd" class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="register_btn">Зарегистрироваться</button>
                                     <a class="btn btn-primary" style="position: absolute;right:18px;" href="./login.php">Войти</a>

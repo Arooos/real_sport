@@ -1,5 +1,7 @@
 <?php
-    include('authentication.php')
+    include('authentication.php');
+    include "../app/connection/tennis_cnf.php";
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -7,22 +9,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../css/style.min.css">
     <title>Профиль</title>
 </head>
 <body>
+    <header>
+        <nav>  
+            <div class="row">
+                <div class="container">
+                    <div class="col-10 offset-1">
+                        <ul class="menu">
+                            <li><a href="/tennis.php" class="menu_link">главная</a></li>
+                            <li><div class="profile_img"><a href="logout.php"><img src="../icons/profile/logout.png" alt=""></a></div></li>
+                        </ul>
+                    </div>
+                </div>   
+            </div>         
+        </nav>
+    </header>
+    <div class="bg">
     <section class="info">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="img_profile"><?php ?></div>
+                <div class="col-lg-4 offset-lg-2 col-md-6 col-sm-12">
+                    <img src="uploads/<?=$_SESSION['auth_user']['img_path']?>">
+                    <form action="imageProfile.php" method="POST" enctype="multipart/form-data">
+                        <input class="select" type="file" name="img">
+                        <button class="reload" type="submit">Обновить картинку профиля</button>
+                    </form>
+                    <div class="alert">
+                        <?php
+                            if (isset($_SESSION['img_status']))
+                            {
+                                echo "<h4>".$_SESSION['img_status']."</h4>";
+                                unset($_SESSION['img_status']);
+                            }
+                        ?>
+                    </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <div class="name"><?php ?></div>
-                    <div class="lastname"><?php ?></div>
-                    <div class="phone"><?php ?></div>
-                    <div class="email">
-                        <?php ?>
-                        <div class="confirmed"><?php ?></div>
+                    <div class="text">Имя: <span><?php echo $_SESSION['auth_user']['name']?></span></div>
+                    <div class="text">Фамилия: <span><?php echo $_SESSION['auth_user']['surname']?></span></div>
+                    <div class="text">Телефон: <span><?php echo $_SESSION['auth_user']['phone']?></span></div>
+                    <div class="text">Электронная почта: <span><?php echo $_SESSION['auth_user']['email']?></span></div>
+                    <div class="text">Уровень игрока: <span>
+                        <?php 
+                            $id_class = $_SESSION['auth_user']['id_class'];
+                            $opt = $db->prepare("SELECT `name` FROM `class` WHERE ID = $id_class");
+                            $opt->execute(array());
+                            $class = $opt->fetch(PDO::FETCH_COLUMN);
+                            echo $class
+                        ?>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -154,6 +194,8 @@
             </div>
         </div>
     </section>
+    </div>
+    
 </body>
 
 <script>

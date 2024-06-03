@@ -1249,12 +1249,12 @@
             <div class="modal_name">ОРГАНИЗАТОР</div>
             <div class="modal_org">ОСИПОВ СЕРГЕЙ ВЛАДИСЛАВОВИЧ<br>+7(950)004-84-74</div>
             <form class="feed-form" id="feed-form" action="db_teleg.php" method="post">
-                <input id="surname" name="surname" placeholder="Фамилия" type="text">
-                <input id="name" name="name" placeholder="Имя" type="text">
-                <input id="patronymic" name="patronymic" placeholder="Отчество" type="text">
-                <input id="phone" name="phone" type="tel" placeholder="Телефон">
+                <input id="surname" name="surname" placeholder="Фамилия" type="text" value="<?php echo $_SESSION['auth_user']['surname']?>">
+                <input id="name" name="name" placeholder="Имя" type="text" value="<?php echo $_SESSION['auth_user']['name']?>">
+                <input id="patronymic" name="patronymic" placeholder="Отчество" type="text" value="<?php echo $_SESSION['auth_user']['patronymic']?>">
+                <input id="phone" name="phone" type="tel" placeholder="Телефон" value="<?php echo $_SESSION['auth_user']['phone']?>">
                 <div class="form-group">
-                    <select name="select" class="select">
+                    <select name="select" class="select" >
                         <option value="<?php 
                                 $sth = $db->prepare("SELECT `name` FROM `class` WHERE id=1");
                                 $sth->execute(array());
