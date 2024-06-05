@@ -104,7 +104,7 @@ switch($case){
                         <li> <?php echo $result_row["surname"],' ',$result_row["name"]?></li>
                     <?php }?>
                 </ul>
-                <a href="">фото</a>';  
+                <a href="https://disk.yandex.ru/d/ghMLfXWhGDkfAQ">фото</a>';  
             </div>
         </div>
         <div class="col-md-6 col-12 pl">

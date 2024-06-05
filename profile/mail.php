@@ -62,7 +62,7 @@
             $email_val = $value[0]['email'];
             if ($email_val == $email){
                 //если пользователь уже в системе
-                $_SESSION['status'] = "Email $email_val уже существует";
+                $_SESSION['status'] = "Email $email_val уже существует, пожалуйста войдите";
                 header("Location: registration.php");
             } else {
                 $phone= str_replace([' ', '(', ')', '-'], '', $phone);

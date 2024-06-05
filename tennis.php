@@ -131,10 +131,22 @@
                                     ?>
                                 </span></div> 
                             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-10 offset-1">
+                                <?php
+                                    if(isset($_SESSION['authenticadet'])){
+                                ?>
                                 <div class="nearest_btn">
                                     <button data-modal="tournament" class="nearest_btn_1 btn bg_block">записаться</button>
                                     <button data-modal="particip" id="<?php echo $val["id"];?>" class="nearest_btn_2 btn bg_block">участники</button>
                                 </div>
+                                <?php 
+                                    } else {
+                                ?>
+                                <div class="alert_success" style="margin-top:10px">Для записи на мероприятие войдите в личный кабинет</div>
+                                <div class="nearest_btn">
+                                    <a class="btn nearest_btn_1" style="width:120px;color:#fff;text-decoration:none" href="/profile/login.php">Войти</a>
+                                    <a class="btn nearest_btn_2" style="width:170px;color:#fff;text-decoration:none" href="/profile/registration.php">Регистрация</a>
+                                </div>
+                                <?php }?>
                             </div>
                             <?php break; } ?>
                         </div> 
@@ -1247,7 +1259,22 @@
             <div class="modal_close">&times;</div>
             <div class="modal_title">ЗАПИСАТЬСЯ НА ТУРНИР</div>
             <div class="modal_name">ОРГАНИЗАТОР</div>
-            <div class="modal_org">ОСИПОВ СЕРГЕЙ ВЛАДИСЛАВОВИЧ<br>+7(950)004-84-74</div>
+            <div class="modal_org">
+                <?php
+                        $opt = $db->prepare("SELECT `surname`,`name`,`patronymic` FROM `organizer` WHERE ID = 1;");
+                        $opt->execute(array());
+                        $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                        foreach ($value as $result_row){
+                            echo $result_row["surname"],' ',$result_row["name"],' ',$result_row["patronymic"];
+                    }?>
+                <br>
+                    <?php
+                        $class = $db->prepare("SELECT `phone` FROM `organizer` WHERE id=1");
+                        $class->execute(array());
+                        $value = $class->fetch(PDO::FETCH_COLUMN);
+                        echo $value;
+                    ?>
+            </div>
             <form class="feed-form" id="feed-form" action="db_teleg.php" method="post">
                 <input id="surname" name="surname" placeholder="Фамилия" type="text" value="<?php echo $_SESSION['auth_user']['surname']?>">
                 <input id="name" name="name" placeholder="Имя" type="text" value="<?php echo $_SESSION['auth_user']['name']?>">
@@ -1298,7 +1325,23 @@
             <div class="modal_close">&times;</div>
             <div class="modal_title">ЗАПИСАТЬСЯ НА ТРЕНИРОВКУ</div>
             <div class="modal_name">ТРЕНЕР</div>
-            <div class="modal_org">ОСИПОВ СЕРГЕЙ ВЛАДИСЛАВОВИЧ<br>+7(950)004-84-74</div> 
+            <div class="modal_org">
+                <?php
+                    $opt = $db->prepare("SELECT `surname`,`name`,`patronymic` FROM `organizer` WHERE ID = 1;");
+                    $opt->execute(array());
+                    $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                    foreach ($value as $result_row){
+                        echo $result_row["surname"],' ',$result_row["name"],' ',$result_row["patronymic"];
+                }?>
+            <br>
+                <?php
+                    $class = $db->prepare("SELECT `phone` FROM `organizer` WHERE id=1");
+                    $class->execute(array());
+                    $value = $class->fetch(PDO::FETCH_COLUMN);
+                    echo $value;
+                ?>
+            </div> 
+            
             <div class="modal_subtitle">ДЛЯ ЗАПИСИ СВЯЖИТЕСЬ С НАМИ<br>ЛЮБЫМ УДОБНЫМ СПОСОБОМ</div>  
             <div class="modal_footer">
                 <div class="row">

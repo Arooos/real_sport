@@ -19,7 +19,7 @@
         <nav>  
             <div class="row">
                 <div class="container">
-                    <div class="col-10 offset-1">
+                    <div class="col-lg-2 offset-lg-10 col-sm-3 offset-sm-9 col-sm-3 offset-sm-9 col-xs-4 offset-xs-8">
                         <ul class="menu">
                             <li><a href="/tennis.php" class="menu_link">главная</a></li>
                             <li><div class="profile_img"><a href="logout.php"><img src="../icons/profile/logout.png" alt=""></a></div></li>

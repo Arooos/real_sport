@@ -28,7 +28,7 @@ if(isset($_POST['login_now_btn']))
                     'img_path' => $userData['img_path'],
                 ];
                 $_SESSION['status'] = "Вы успешно авторизировались";
-                header("Location: profile.php");
+                header("Location: ../tennis.php");
                 exit();
             } 
             else 
@@ -46,7 +46,7 @@ if(isset($_POST['login_now_btn']))
     }
     else
     {
-        $_SESSION['status'] = "All field are Mandentory";
+        $_SESSION['status'] = "Заполните все поля";
         header("Location: login.php");
         exit();
     }
