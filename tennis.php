@@ -141,7 +141,7 @@
                                 <?php 
                                     } else {
                                 ?>
-                                <div class="alert_success" style="margin-top:10px">Для записи на мероприятие войдите в личный кабинет</div>
+                                <div class="alert_success" style="margin-top:10px;font-size: 24px;">Для записи на мероприятие войдите в личный кабинет</div>
                                 <div class="nearest_btn">
                                     <a class="btn nearest_btn_1" style="width:120px;color:#fff;text-decoration:none" href="/profile/login.php">Войти</a>
                                     <a class="btn nearest_btn_2" style="width:170px;color:#fff;text-decoration:none" href="/profile/registration.php">Регистрация</a>
@@ -303,7 +303,7 @@
                         <div class="front">
                             <img src="img/tennis/categories/man1.png" alt="" class="categories_front_img">
                             <div class="categories_front">
-                                <div class="categories_front_title">МУЖСКОЙ <br> ОДИНОЧНЫЙ ТУРНИР</div>
+                                <div class="categories_front_title">мужской <br> парный турнир</div>
                                 <div class="categories_front_inf">ДАТЫ:</div>
                                 <div class="categories_front_near">СКОРО</div>
                                 <div class="categories_front_inf">ОРГАНИЗАТОР:</div>
@@ -313,7 +313,7 @@
                         </div> 
                         <div class="back">
                             <div class="categories_back">
-                                <div class="categories_back_title">СМЕШАННЫЙ <br> ПАРНЫЙ ТУРНИР</div>
+                                <div class="categories_back_title">мужской <br> парный турнир</div>
                                 <div class="categories_back_address">ИНФОРМАЦИЯ СКОРО ПОЯВИТСЯ</div>
                                 <div class="categories_back_near_else">СКОРО</div>
                                 <div class="categories_back_data">РЕГЛАМЕНТ: <span>УТОЧНЯЕТСЯ</span></div>
@@ -341,7 +341,7 @@
                         <div class="front">
                             <img src="img/tennis/categories/man2.png" alt="" class="categories_front_img">
                             <div class="categories_front">
-                                <div class="categories_front_title">женский <br> одиночный турнир</div>
+                                <div class="categories_front_title">мужской <br> парный турнир</div>
                                 <div class="categories_front_inf">ДАТЫ:</div>
                                 <div class="categories_front_near">
                                 <?php
@@ -459,7 +459,7 @@
                         <div class="front">
                             <img src="img/tennis/categories/man2.png" alt="" class="categories_front_img">
                             <div class="categories_front">
-                                <div class="categories_front_title">женский <br> одиночный турнир</div>
+                                <div class="categories_front_title">мужской <br> парный турнир</div>
                                 <div class="categories_front_inf">ДАТЫ:</div>
                                 <div class="categories_front_near">СКОРО</div>
                                 <div class="categories_front_inf">ОРГАНИЗАТОР:</div>
@@ -469,7 +469,7 @@
                         </div> 
                         <div class="back">
                             <div class="categories_back">
-                                <div class="categories_back_title">женский <br> одиночный турнир</div>
+                                <div class="categories_back_title">мужской <br> парный турнир</div>
                                 <div class="categories_back_address">ИНФОРМАЦИЯ СКОРО ПОЯВИТСЯ</div>
                                 <div class="categories_back_near_else">СКОРО</div>
                                 <div class="categories_back_data">РЕГЛАМЕНТ: <span>УТОЧНЯЕТСЯ</span></div>
@@ -824,7 +824,7 @@
                             <img src="img/tennis/categories/man2.png" alt="" class="front_item_img">
                             
                             <div class="front_item">
-                                <div class="front_item_title">женский <br> одиночный турнир</div>
+                                <div class="front_item_title">мужской <br> парный турнир</div>
                                 <div class="front_item_inf">ДАТЫ:</div>
                                 <div class="front_item_near">
                                 <?php
@@ -873,7 +873,7 @@
                         </div> 
                         <div class="back">
                             <div class="back_item">
-                                <div class="back_item_title">женский <br> одиночный турнир</div>
+                                <div class="back_item_title">мужской <br> парный турнир</div>
                                 <div class="back_item_address">
                                 <!-- вывод места -->
                                 <?php
@@ -942,7 +942,7 @@
                         <div class="front">
                             <img src="img/tennis/categories/man2.png" alt="" class="front_item_img">
                             <div class="front_item">
-                                <div class="front_item_title">женский <br> одиночный турнир</div>
+                                <div class="front_item_title">мужской <br> парный турнир</div>
                                 <div class="front_item_inf">ДАТЫ:</div>
                                 <div class="front_item_near">СКОРО</div>
                                 <div class="front_item_inf">ОРГАНИЗАТОР:</div>
@@ -952,7 +952,7 @@
                         </div> 
                         <div class="back">
                             <div class="back_item">
-                                <div class="back_item_title">женский <br> одиночный турнир</div>
+                                <div class="back_item_title">мужской <br> парный турнир</div>
                                 <div class="back_item_address">ИНФОРМАЦИЯ СКОРО ПОЯВИТСЯ</div>
                                 <div class="back_item_near_else">СКОРО</div>
                                 <div class="back_item_data">РЕГЛАМЕНТ: <span>УТОЧНЯЕТСЯ</span></div>

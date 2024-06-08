@@ -41,7 +41,6 @@
 
             $mail->Body = $email_template;
             $mail->send();
-            // echo 'Message has been sent';
         }
 
     if (isset($_POST['register_btn']))
@@ -55,36 +54,64 @@
             $password = $_POST['password'];
             $verify_token = md5(rand());
 
-            //проверка email
-            $opt = $db->prepare("SELECT `email` FROM `users` WHERE `email` = '$email'");
-            $opt->execute(array());
-            $value = $opt->fetchall(PDO::FETCH_ASSOC);
-            $email_val = $value[0]['email'];
-            if ($email_val == $email){
-                //если пользователь уже в системе
-                $_SESSION['status'] = "Email $email_val уже существует, пожалуйста войдите";
+            if (empty($name)){
+                $_SESSION['status'] = "Введите имя";
                 header("Location: registration.php");
-            } else {
-                $phone= str_replace([' ', '(', ')', '-'], '', $phone);
-                // делаем проверку для записи id
-                if ($select == 'любитель'):
-                $select = 1;
-                else:
-                $select = 2;
-                endif;
-                // добавить пользователя
-                $sql = "INSERT INTO `users` (`id`, `surname`, `name`, `patronymic`, `phone`, `id_class`, `email`, `password`, `verify_token`) VALUES (NULL, '$surname', '$name', '$patronymic', '$phone', '$select', '$email', '$password', '$verify_token')";
-                $query = $db->exec($sql);
+                exit;
+            }
+            elseif (empty($surname)){
+                $_SESSION['status'] = "Введите фамилию";
+                header("Location: registration.php");
+                exit;
+            }
+            elseif (empty($email)){
+                $_SESSION['status'] = "Введите адрес электронной почты";
+                header("Location: registration.php");
+                exit;
+            }
+            elseif (empty($phone)){
+                $_SESSION['status'] = "Введите мобильный телефон";
+                header("Location: registration.php");
+                exit;
+            }
+            elseif (empty($password)){
+                $_SESSION['status'] = "Введите пароль";
+                header("Location: registration.php");
+                exit;
+            }
+            else {
+                //проверка email
+                $opt = $db->prepare("SELECT `email` FROM `users` WHERE `email` = '$email'");
+                $opt->execute(array());
+                $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                $email_val = $value[0]['email'];
+                if ($email_val == $email){
+                    //если пользователь уже в системе
+                    $_SESSION['status'] = "Email $email_val уже существует, пожалуйста войдите";
+                    header("Location: login.php");
+                } else {
+                    $phone= str_replace([' ', '(', ')', '-'], '', $phone);
+                    // делаем проверку для записи id
+                    if ($select == 'любитель'):
+                    $select = 1;
+                    else:
+                    $select = 2;
+                    endif;
+                    
+                    // добавить пользователя
+                    $sql = "INSERT INTO `users` (`id`, `surname`, `name`, `patronymic`, `phone`, `id_class`, `email`, `password`, `verify_token`) VALUES (NULL, '$surname', '$name', '$patronymic', '$phone', '$select', '$email', '$password', '$verify_token')";
+                    $query = $db->exec($sql);
 
-                if($query){
-                    sendemail_verify("$name", "$email", "$verify_token", "$password");
+                    if($query){
+                        sendemail_verify("$name", "$email", "$verify_token", "$password");
 
-                    $_SESSION['status'] = "Вы успешно зарегистрировались! Пожалуйста, подтвердите Вашу электронную почту. $check_email_query ";
-                    header("Location: registration.php");
-                }
-                else{
-                    $_SESSION['status'] = "Ошибка регистрации";
-                    header("Location: registration.php");
+                        $_SESSION['status'] = "Вы успешно зарегистрировались! Пожалуйста, подтвердите Вашу электронную почту. $check_email_query ";
+                        header("Location: registration.php");
+                    }
+                    else{
+                        $_SESSION['status'] = "Ошибка регистрации";
+                        header("Location: registration.php");
+                    }
                 }
             }
         }

@@ -141,6 +141,7 @@ $(document).ready(function(){
     form.validate();
     $('input[name=phone]').mask("+7 (999) 999-99-99");
 
+
     //админ панель
 
     $('#feed-form').submit(function(e) {

@@ -17,13 +17,13 @@
             <nav>
                 <a class="link_main" href="../tennis.php">Главная</a>
             </nav>
-            <div class="bg_body_reg">
+            <div class="bg_body_reg" id="registration">
                 <div class="container">
                     <div class="card_header">Регистрация</div>
                     <div class="card_body">
-                        <form class="feed_form" action="mail.php" method="POST">
-                            <input name="name" type="name" class="form-control" placeholder="Имя" required>
-                            <input name="lastname" type="text" class="form-control" placeholder="Фамилия" required>
+                        <form class="feed_form" id="reg_form"  method="POST">
+                            <input name="name" id="name" type="name" class="form-control" placeholder="Имя">
+                            <input name="lastname" type="text" class="form-control" placeholder="Фамилия">
                             <input name="patronymic" type="text" class="form-control" placeholder="Отчество">
                             <select name="select" class="select">
                                 <option value="<?php 
@@ -49,9 +49,9 @@
                                     echo $value;
                                 ?></option>
                             </select>
-                            <input name="phone" type="phone" class="form-control" placeholder="Телефон" required>
-                            <input name="email" type="email" class="form-control"placeholder="Электронная почта" required>
-                            <input name="password" type="text" class="form-control" placeholder="Пароль" required>
+                            <input name="phone" type="tel" class="form-control" placeholder="+7 (___) ___-__-__">
+                            <input name="email" type="email" class="form-control"placeholder="Электронная почта">
+                            <input name="password" type="text" class="form-control" placeholder="Пароль">
                                 <div class="alert_success">
                                 <?php
                                         if (isset($_SESSION['status']))
@@ -72,3 +72,8 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/jquery.maskedinput.min.js"></script>
+    <script src="./reg.validate.js"></script>
