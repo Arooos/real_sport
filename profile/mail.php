@@ -85,9 +85,20 @@
                 $opt->execute(array());
                 $value = $opt->fetchall(PDO::FETCH_ASSOC);
                 $email_val = $value[0]['email'];
-                if ($email_val == $email){
+
+                $opt = $db->prepare("SELECT `phone` FROM `users` WHERE `phone` = '$phone'");
+                $opt->execute(array());
+                $value = $opt->fetchall(PDO::FETCH_ASSOC);
+                $phone_val = $value[0]['phone'];
+                ?>
+                <script>
+                console.log(<?= json_encode($phone_val); ?>);
+                console.log(<?= json_encode($email_val); ?>);
+                </script>
+                <?
+                if ($email_val == $email || $phone == $phone_val){
                     //если пользователь уже в системе
-                    $_SESSION['status'] = "Email $email_val уже существует, пожалуйста войдите";
+                    $_SESSION['status'] = "Email $email_val или телефон $phone уже существует, пожалуйста войдите или проверьте данные";
                     header("Location: login.php");
                 } else {
                     $phone= str_replace([' ', '(', ')', '-'], '', $phone);

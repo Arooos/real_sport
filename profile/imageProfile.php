@@ -1,19 +1,6 @@
 <?php 
 session_start();
 require "../app/connection/tennis_cnf.php";
-    // if ($error == UPLOAD_ERR_OK) {
-    //     $name = basename($_FILES["img"]["name"]);
-    //     move_uploaded_file($_FILES["img"]["tmp_name"], "uploads/$name");
-    //     $_SESSION['img_status'] = "картинка загружена успешно";
-    //     header("Location: profile.php");
-    //     exit();
-    // }
-    // else {
-    //     $_SESSION['img_status'] = "Ошибка! Картинка не была загружена";
-    //     header("Location: profile.php");
-    //     exit();
-    // }
-
 
         $img_name = $_FILES['img']['name'];
         $img_size = $_FILES['img']['size'];
@@ -42,15 +29,15 @@ require "../app/connection/tennis_cnf.php";
                     $query = $db->exec($sql);
 
                     $_SESSION['img_status'] = "Картинка успешно загружена";
-                    // header("Location: profile.php");
+                    header("Location: profile.php");
                 }else {
                     $_SESSION['img_status'] = "Ошибка! Вы не можете загрузить данный тип файла";
-                    // header("Location: profile.php");
+                    header("Location: profile.php");
                 }
             }
         }else {
             $_SESSION['img_status'] = "Ошибка! Картинка не загружена";
-            // header("Location: profile.php");
+            header("Location: profile.php");
         }
 
 ?>

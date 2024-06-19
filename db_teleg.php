@@ -70,10 +70,14 @@
     //автоматическая запись в сводную таблицу users_result_tour (участник + турнир)
 
     //получаем id актуального турнира в который записывается участник
-    $opt = $db->prepare("SELECT id FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE);");
+    $opt = $db->prepare("SELECT * FROM `tournament` WHERE date = (SELECT MIN(date) from tournament WHERE date >= CURRENT_DATE);");
     $opt->execute(array());
-    $id_tour = $opt->fetch(PDO::FETCH_COLUMN);
-
+    $id_tour = $opt->fetch(PDO::FETCH_COLUMN);?>
+    <script>
+    console.log(<?= json_encode($id_tour); ?>);
+    console.log(<?= json_encode($id_user); ?>);
+</script>
+<?php
     //получаем id_tour из таблицы users_result_tour
     $opt = $db->prepare("SELECT `id` FROM `users_result_tour` WHERE `id_tournament` = $id_tour and `id_user` = $id_user");
     $opt->execute(array());

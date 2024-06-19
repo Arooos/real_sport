@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="card_header">Регистрация</div>
                     <div class="card_body">
-                        <form class="feed_form" id="reg_form"  method="POST">
+                        <form class="feed_form" action="mail.php" id="reg_form"  method="POST">
                             <input name="name" id="name" type="name" class="form-control" placeholder="Имя">
                             <input name="lastname" type="text" class="form-control" placeholder="Фамилия">
                             <input name="patronymic" type="text" class="form-control" placeholder="Отчество">

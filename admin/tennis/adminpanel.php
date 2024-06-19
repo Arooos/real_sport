@@ -14,6 +14,7 @@
 </head>
 <body>
     <div class="container" style="margin: 0 auto;margin-top:100px; max-width: 600px;">
+    <label>Сформировать новое мероприятие</label>
         <?php if(!empty($_SESSION['login'])) :?>
         <form class="feed-form" action="addtour.php" method="post">
         <!-- выбор категории -->
@@ -172,15 +173,10 @@
                 <button type="submit" class="btn btn-primary" style="display: block;margin-right: 0;margin-left: auto;width: 100px">Добавить</button>
             </div>
         </div>
-        <!-- если сессия не открыта -->
-        <?php else:
-            echo '<h2>Вы что хакер?</h2>';
-            echo '<a href="/">На главную</a>';
-        ?>
-        <?php endif ?> 
+    
         </form>
      <!-- Победители турнира -->
-
+    <lable style="display:block;margin-top: 15px;"> Добавить результат участников</lable>
      <form class="formSearch" id="formSearch" name="formSearch">
             <div class="mb-3" style="display:block;margin-top: 50px">
                 <div class="input-group mb-3">
@@ -196,6 +192,12 @@
         <div id="serch_result">
         </div>
     </div>  
+     <!-- если сессия не открыта -->
+     <?php else:
+            echo '<h2>Вы что хакер?</h2>';
+            echo '<a href="/">На главную</a>';
+        ?>
+        <?php endif ?> 
     
 </body>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>

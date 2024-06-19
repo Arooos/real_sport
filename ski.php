@@ -1,4 +1,5 @@
 <?php
+    session_start(); 
     require "app/connection/ski_cnf.php";
 ?>
 
@@ -26,7 +27,6 @@
 <body class="body">
     
     <?php 
-    session_start(); 
     $case = 3; 
     $_SESSION['case'] = $case;
     

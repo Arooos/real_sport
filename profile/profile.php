@@ -1,7 +1,7 @@
 <?php
+    session_start();
     include('authentication.php');
     include "../app/connection/tennis_cnf.php";
-    session_start();
 ?>
 
 <!DOCTYPE html>
